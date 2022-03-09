@@ -12,7 +12,7 @@ public class ChessPosition {
 	public ChessPosition(char column, int row) {
 		
 		if(column < 'a' || column > 'h'|| row < 1 || row > 8) {
-			throw new ChessException("Erro ao declarar posição do xadrez, valorez validos de a1 até h8");
+			throw new ChessException("Erro ao declarar posicao do xadrez, valorez validos de a1 ate h8");
 		}
 		
 		this.column = column;
