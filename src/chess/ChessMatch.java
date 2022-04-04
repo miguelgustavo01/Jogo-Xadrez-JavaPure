@@ -10,13 +10,27 @@ public class ChessMatch {
 
 	//ATRIBUTOS
 	
+	private int turn;
+	private Color currentPlayer;
 	private Board board;
 	
 	//CONSTRUTOR
 	
 	public ChessMatch() {
 		board = new Board(8,8);
+		turn= 1;
+		currentPlayer = Color.WHITE;
 		initialSetup(); 
+	}
+	
+	//GETTERS AND SETTERS
+	
+	public int getTurn() {
+		return turn;
+	}
+	
+	public Color getCurrentPlayer() {
+		return currentPlayer;
 	}
 	
 	//METODOS
@@ -43,6 +57,7 @@ public class ChessMatch {
 		validateSourcePosition(source);
 		validateTargetPosition(source,target);
 		Piece capturedPiece = makeMove(source, target);
+		nextTurn();
 		return (ChessPiece)capturedPiece;
 	}
 	
@@ -57,6 +72,9 @@ public class ChessMatch {
 		if (!board.thereIsAPiece(position)) {
 			throw new ChessException("Nao existe peca na posicao de origem.");
 		}
+		if (currentPlayer != ((ChessPiece)board.piece(position)).getColor()) {
+			throw new ChessException("A peca escolhida eh do adversario");
+		}
 		if(!board.piece(position).isThrereAnyPossibleMove()) {
 			throw new ChessException("A peca escolhida nao tem movimentos possiveis");
 		}
@@ -66,6 +84,11 @@ public class ChessMatch {
 		if (!board.piece(source).possibleMove(target)) {
 			throw new ChessException ("A peca escolhida nao pode se mover para a posicao de destino. ");
 		}
+	}
+	
+	private void nextTurn() {
+		turn++;
+		currentPlayer = (currentPlayer == Color.WHITE) ? Color.BLACK : Color.WHITE;
 	}
 	
 	private void placeNewPiece(char column, int row, ChessPiece piece) {
