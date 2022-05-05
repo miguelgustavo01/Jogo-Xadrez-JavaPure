@@ -9,6 +9,7 @@ public abstract class ChessPiece extends Piece {
 	//ATRIBUTOS
 	
 	private Color color;
+	private int moveCount;
 	
 	//CONSTRUTOR ARGUMENTOS
 	
@@ -22,8 +23,20 @@ public abstract class ChessPiece extends Piece {
 	public Color getColor() {
 		return color;
 	}
+	
+	public int getMoveCount() {
+		return moveCount;
+	}
 
 	//METODOS
+	
+	public void increaseMoveCount() {
+		moveCount++;
+	}
+	
+	public void decreaseMoveCount() {
+		moveCount--;
+	}
 	
 	public ChessPosition getChessPosition() {
 		return ChessPosition.fromPosition(position);
