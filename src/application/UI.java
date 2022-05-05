@@ -64,11 +64,11 @@ public class UI {
 			System.out.println("Esperando o jogador: " + chessMatch.getCurrentPlayer());
 			
 			if(chessMatch.getCheck()) {
-				System.out.println(ANSI_YELLOW + "CHECK!" + ANSI_RESET);
+				System.out.println(ANSI_RED + "CHECK!" + ANSI_RESET);
 			}
 		}
 		else {
-			System.out.println(ANSI_YELLOW + "CHECK MATE!" + ANSI_RESET);
+			System.out.println(ANSI_RED + "CHECK MATE!" + ANSI_RESET);
 			System.out.println("Vencedor: " + chessMatch.getCurrentPlayer());
 		}
 	}
