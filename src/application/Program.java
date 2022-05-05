@@ -18,7 +18,7 @@ public class Program {
 		ChessMatch chessmatch = new ChessMatch();
 		List<ChessPiece> captured = new ArrayList<>();
 
-		while (true) {
+		while (!chessmatch.getCheckMate()) { //POSSIVEL ERRO NO chessmatch minusculo
 			try {
 				UI.clearScreen();
 				UI.printMatch(chessmatch, captured); //POSSIVEL ERRO NO chessmatch minusculo
@@ -49,6 +49,8 @@ public class Program {
 			}
 
 		}
+		UI.clearScreen();
+		UI.printMatch(chessmatch, captured);
 
 	}
 }
